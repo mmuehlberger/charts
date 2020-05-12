@@ -19,6 +19,9 @@ metadata:
   name: {{ template "jenkins.fullname" . }}
 spec:
   rules:
+{{- if .Values.master.ingress.customPaths }}
+{{ toYaml .Values.master.ingress.customPaths | indent 2 }}
+{{- end }}
   - http:
       paths:
       - backend:
